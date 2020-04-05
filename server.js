@@ -1,14 +1,19 @@
 const express = require('express');
 const server = express();
 const actionsRouter = require('./actions/actionsRouter');
+const cors = require('cors');
+
 
 //Databases
 const projectDb = require('./data/helpers/projectModel.js');
 
 //Middleware
 server.use(express.json());
+server.use(cors());
+
 
 server.use('/actions/', actionsRouter);
+
 
 
 server.get('/', (req, res) => {
